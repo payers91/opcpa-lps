@@ -183,6 +183,100 @@ record(bi, "$(BASE):TTSIM:DEV01:ERROR_RBV") {
   info(archive, "VAL")
 }
 
+record(bi, "$(BASE):LPS:LEAK:LOW_RES_RBV") {
+  field(DESC, "MAIN.fbLeakMonitor.bLowResistance")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbLeakMonitor.bLowResistance?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(archive, "VAL")
+}
+
+record(longin, "$(BASE):LPS:LEAK:LEAKS_RBV") {
+  field(DESC, "MAIN.fbLeakMonitor.nLeakLocations")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbLeakMonitor.nLeakLocations?")
+  info(archive, "VAL")
+}
+
+record(bi, "$(BASE):LPS:LEAK:LOTAO_ERROR_RBV") {
+  # MAIN.fbLeakMonitor.bLeakOpticalTableAmphosOn
+  field(DESC, "MAIN.fbLeakMonitor.b...icalTableAmphosOn")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbLeakMonitor.bLeakOpticalTableAmphosOn?")
+  field(ZSV, "NO_ALARM")
+  field(OSV, "MAJOR")
+  field(ZNAM, "OK")
+  field(ONAM, "ERROR")
+  info(archive, "VAL")
+}
+
+record(bi, "$(BASE):LPS:LEAK:LOTNL_ERROR_RBV") {
+  # MAIN.fbLeakMonitor.bLeakOpticalTableNoLaser
+  field(DESC, "MAIN.fbLeakMonitor.b...ticalTableNoLaser")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbLeakMonitor.bLeakOpticalTableNoLaser?")
+  field(ZSV, "NO_ALARM")
+  field(OSV, "MAJOR")
+  field(ZNAM, "OK")
+  field(ONAM, "ERROR")
+  info(archive, "VAL")
+}
+
+record(bi, "$(BASE):LPS:LEAK:LOCO_ERROR_RBV") {
+  field(DESC, "MAIN.fbLeakMonitor.bLeakOpcpaCarbideOn")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbLeakMonitor.bLeakOpcpaCarbideOn?")
+  field(ZSV, "NO_ALARM")
+  field(OSV, "MAJOR")
+  field(ZNAM, "OK")
+  field(ONAM, "ERROR")
+  info(archive, "VAL")
+}
+
+record(bi, "$(BASE):LPS:LEAK:LUT_ERROR_RBV") {
+  field(DESC, "MAIN.fbLeakMonitor.bLeakUnderTable")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbLeakMonitor.bLeakUnderTable?")
+  field(ZSV, "NO_ALARM")
+  field(OSV, "MAJOR")
+  field(ZNAM, "OK")
+  field(ONAM, "ERROR")
+  info(archive, "VAL")
+}
+
+record(bi, "$(BASE):LPS:LEAK:LIR_ERROR_RBV") {
+  field(DESC, "MAIN.fbLeakMonitor.bLeakInsideRacks")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbLeakMonitor.bLeakInsideRacks?")
+  field(ZSV, "NO_ALARM")
+  field(OSV, "MAJOR")
+  field(ZNAM, "OK")
+  field(ONAM, "ERROR")
+  info(archive, "VAL")
+}
+
 record(bi, "$(BASE):LPS:TEMP01:ERROR_RBV") {
   field(DESC, "MAIN.fbChillerLoop01.bError")
   field(SCAN, "I/O Intr")
@@ -371,6 +465,28 @@ record(bo, "$(BASE):LPS:BASEPLATE_CHILLER:RESET") {
   info(archive, "VAL")
 }
 
+record(bi, "$(BASE):LPS:MASTER_OVERRIDE_RBV") {
+  field(DESC, "MAIN.bMasterOverride")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.bMasterOverride?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(archive, "VAL")
+}
+
+record(bo, "$(BASE):LPS:MASTER_OVERRIDE") {
+  field(DESC, "MAIN.bMasterOverride")
+  field(DTYP, "asynInt32")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/MAIN.bMasterOverride=")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "VAL")
+  info(archive, "VAL")
+}
+
 record(bi, "$(BASE):LPS:MASTER_AMP_SHUTTER_RBV") {
   field(DESC, "MAIN.bAmpShutterClosed")
   field(SCAN, "I/O Intr")
@@ -393,6 +509,82 @@ record(bo, "$(BASE):LPS:MASTER_AMP_SHUTTER") {
   info(archive, "VAL")
 }
 
+record(ai, "$(BASE):LPS:AMPHOS:VOLTAGE_RBV") {
+  field(DESC, "MAIN.fbAmphos.fVoltage")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbAmphos.fVoltage?")
+  field(PREC, "3")
+  field(EGU, "Volts")
+  field(HOPR, "10.0")
+  field(LOPR, "0.0")
+  field(LLSV, "MAJOR")
+  field(LSV, "MINOR")
+  info(autosaveFields_pass0, "PREC")
+  info(archive, "VAL")
+}
+
+record(bi, "$(BASE):LPS:AMPHOS:ERROR_RBV") {
+  field(DESC, "MAIN.fbAmphos.bError")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbAmphos.bError?")
+  field(ZSV, "NO_ALARM")
+  field(OSV, "MAJOR")
+  field(ZNAM, "OK")
+  field(ONAM, "ERROR")
+  info(archive, "VAL")
+}
+
+record(ai, "$(BASE):LPS:OPCPA:VOLTAGE_RBV") {
+  field(DESC, "MAIN.fbOpcpa.fVoltage")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbOpcpa.fVoltage?")
+  field(PREC, "3")
+  field(EGU, "Volts")
+  field(HOPR, "10.0")
+  field(LOPR, "0.0")
+  field(LLSV, "MAJOR")
+  field(LSV, "MINOR")
+  info(autosaveFields_pass0, "PREC")
+  info(archive, "VAL")
+}
+
+record(bi, "$(BASE):LPS:OPCPA:ERROR_RBV") {
+  field(DESC, "MAIN.fbOpcpa.bError")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbOpcpa.bError?")
+  field(ZSV, "NO_ALARM")
+  field(OSV, "MAJOR")
+  field(ZNAM, "OK")
+  field(ONAM, "ERROR")
+  info(archive, "VAL")
+}
+
+record(bi, "$(BASE):LPS:DUMP_CHILLER:ERROR_RBV") {
+  field(DESC, "MAIN.fbDumpChiller.bError")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbDumpChiller.bError?")
+  field(ZSV, "NO_ALARM")
+  field(OSV, "MAJOR")
+  field(ZNAM, "OK")
+  field(ONAM, "ERROR")
+  info(archive, "VAL")
+}
+
 record(bi, "$(BASE):LPS:MASTER_LATCH_RESET_RBV") {
   field(DESC, "MAIN.bMasterLatchReset")
   field(SCAN, "I/O Intr")
@@ -412,20 +604,6 @@ record(bo, "$(BASE):LPS:MASTER_LATCH_RESET") {
   field(ZNAM, "FALSE")
   field(ONAM, "TRUE")
   info(autosaveFields_pass0, "VAL")
-  info(archive, "VAL")
-}
-
-record(bi, "$(BASE):LPS:DUMP_CHILLER:ERROR_RBV") {
-  field(DESC, "MAIN.fbDumpChiller.bError")
-  field(SCAN, "I/O Intr")
-  field(PINI, "1")
-  field(TSE, "-2")
-  field(DTYP, "asynInt32")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbDumpChiller.bError?")
-  field(ZSV, "NO_ALARM")
-  field(OSV, "MAJOR")
-  field(ZNAM, "OK")
-  field(ONAM, "ERROR")
   info(archive, "VAL")
 }
 
@@ -1927,153 +2105,6 @@ record(longout, "$(BASE):LPS:LEAK:L_MAX06") {
   info(archive, "VAL")
 }
 
-record(bi, "$(BASE):LPS:MASTER_OVERRIDE_RBV") {
-  field(DESC, "MAIN.bMasterOverride")
-  field(SCAN, "I/O Intr")
-  field(PINI, "1")
-  field(TSE, "-2")
-  field(DTYP, "asynInt32")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.bMasterOverride?")
-  field(ZNAM, "FALSE")
-  field(ONAM, "TRUE")
-  info(archive, "VAL")
-}
-
-record(bo, "$(BASE):LPS:MASTER_OVERRIDE") {
-  field(DESC, "MAIN.bMasterOverride")
-  field(DTYP, "asynInt32")
-  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/MAIN.bMasterOverride=")
-  field(ZNAM, "FALSE")
-  field(ONAM, "TRUE")
-  info(autosaveFields_pass0, "VAL")
-  info(archive, "VAL")
-}
-
-record(bi, "$(BASE):LPS:LEAK:LOW_RES_RBV") {
-  field(DESC, "MAIN.fbLeakMonitor.bLowResistance")
-  field(SCAN, "I/O Intr")
-  field(PINI, "1")
-  field(TSE, "-2")
-  field(DTYP, "asynInt32")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbLeakMonitor.bLowResistance?")
-  field(ZNAM, "FALSE")
-  field(ONAM, "TRUE")
-  info(archive, "VAL")
-}
-
-record(longin, "$(BASE):LPS:LEAK:LEAKS_RBV") {
-  field(DESC, "MAIN.fbLeakMonitor.nLeakLocations")
-  field(SCAN, "I/O Intr")
-  field(PINI, "1")
-  field(TSE, "-2")
-  field(DTYP, "asynInt32")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbLeakMonitor.nLeakLocations?")
-  info(archive, "VAL")
-}
-
-record(bi, "$(BASE):LPS:LEAK:LOTAO_ERROR_RBV") {
-  # MAIN.fbLeakMonitor.bLeakOpticalTableAmphosOn
-  field(DESC, "MAIN.fbLeakMonitor.b...icalTableAmphosOn")
-  field(SCAN, "I/O Intr")
-  field(PINI, "1")
-  field(TSE, "-2")
-  field(DTYP, "asynInt32")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbLeakMonitor.bLeakOpticalTableAmphosOn?")
-  field(ZSV, "NO_ALARM")
-  field(OSV, "MAJOR")
-  field(ZNAM, "OK")
-  field(ONAM, "ERROR")
-  info(archive, "VAL")
-}
-
-record(bi, "$(BASE):LPS:LEAK:LOTNL_ERROR_RBV") {
-  # MAIN.fbLeakMonitor.bLeakOpticalTableNoLaser
-  field(DESC, "MAIN.fbLeakMonitor.b...ticalTableNoLaser")
-  field(SCAN, "I/O Intr")
-  field(PINI, "1")
-  field(TSE, "-2")
-  field(DTYP, "asynInt32")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbLeakMonitor.bLeakOpticalTableNoLaser?")
-  field(ZSV, "NO_ALARM")
-  field(OSV, "MAJOR")
-  field(ZNAM, "OK")
-  field(ONAM, "ERROR")
-  info(archive, "VAL")
-}
-
-record(bi, "$(BASE):LPS:LEAK:LOCO_ERROR_RBV") {
-  field(DESC, "MAIN.fbLeakMonitor.bLeakOpcpaCarbideOn")
-  field(SCAN, "I/O Intr")
-  field(PINI, "1")
-  field(TSE, "-2")
-  field(DTYP, "asynInt32")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbLeakMonitor.bLeakOpcpaCarbideOn?")
-  field(ZSV, "NO_ALARM")
-  field(OSV, "MAJOR")
-  field(ZNAM, "OK")
-  field(ONAM, "ERROR")
-  info(archive, "VAL")
-}
-
-record(bi, "$(BASE):LPS:LEAK:LUT_ERROR_RBV") {
-  field(DESC, "MAIN.fbLeakMonitor.bLeakUnderTable")
-  field(SCAN, "I/O Intr")
-  field(PINI, "1")
-  field(TSE, "-2")
-  field(DTYP, "asynInt32")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbLeakMonitor.bLeakUnderTable?")
-  field(ZSV, "NO_ALARM")
-  field(OSV, "MAJOR")
-  field(ZNAM, "OK")
-  field(ONAM, "ERROR")
-  info(archive, "VAL")
-}
-
-record(bi, "$(BASE):LPS:LEAK:LIR_ERROR_RBV") {
-  field(DESC, "MAIN.fbLeakMonitor.bLeakInsideRacks")
-  field(SCAN, "I/O Intr")
-  field(PINI, "1")
-  field(TSE, "-2")
-  field(DTYP, "asynInt32")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbLeakMonitor.bLeakInsideRacks?")
-  field(ZSV, "NO_ALARM")
-  field(OSV, "MAJOR")
-  field(ZNAM, "OK")
-  field(ONAM, "ERROR")
-  info(archive, "VAL")
-}
-
-record(ai, "$(BASE):LPS:AMPHOS:VOLTAGE_RBV") {
-  field(DESC, "MAIN.fbAmphos.fVoltage")
-  field(SCAN, "I/O Intr")
-  field(PINI, "1")
-  field(TSE, "-2")
-  field(DTYP, "asynFloat64")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbAmphos.fVoltage?")
-  field(PREC, "3")
-  field(EGU, "Volts")
-  field(HOPR, "10.0")
-  field(LOPR, "0.0")
-  field(LLSV, "MAJOR")
-  field(LSV, "MINOR")
-  info(autosaveFields_pass0, "PREC")
-  info(archive, "VAL")
-}
-
-record(bi, "$(BASE):LPS:AMPHOS:ERROR_RBV") {
-  field(DESC, "MAIN.fbAmphos.bError")
-  field(SCAN, "I/O Intr")
-  field(PINI, "1")
-  field(TSE, "-2")
-  field(DTYP, "asynInt32")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbAmphos.bError?")
-  field(ZSV, "NO_ALARM")
-  field(OSV, "MAJOR")
-  field(ZNAM, "OK")
-  field(ONAM, "ERROR")
-  info(archive, "VAL")
-}
-
 record(bi, "$(BASE):LPS:BASEPLATE_CHILLER:ERROR_RBV") {
   field(DESC, "MAIN.fbBaseplateChiller.bError")
   field(SCAN, "I/O Intr")
@@ -2081,37 +2112,6 @@ record(bi, "$(BASE):LPS:BASEPLATE_CHILLER:ERROR_RBV") {
   field(TSE, "-2")
   field(DTYP, "asynInt32")
   field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbBaseplateChiller.bError?")
-  field(ZSV, "NO_ALARM")
-  field(OSV, "MAJOR")
-  field(ZNAM, "OK")
-  field(ONAM, "ERROR")
-  info(archive, "VAL")
-}
-
-record(ai, "$(BASE):LPS:OPCPA:VOLTAGE_RBV") {
-  field(DESC, "MAIN.fbOpcpa.fVoltage")
-  field(SCAN, "I/O Intr")
-  field(PINI, "1")
-  field(TSE, "-2")
-  field(DTYP, "asynFloat64")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbOpcpa.fVoltage?")
-  field(PREC, "3")
-  field(EGU, "Volts")
-  field(HOPR, "10.0")
-  field(LOPR, "0.0")
-  field(LLSV, "MAJOR")
-  field(LSV, "MINOR")
-  info(autosaveFields_pass0, "PREC")
-  info(archive, "VAL")
-}
-
-record(bi, "$(BASE):LPS:OPCPA:ERROR_RBV") {
-  field(DESC, "MAIN.fbOpcpa.bError")
-  field(SCAN, "I/O Intr")
-  field(PINI, "1")
-  field(TSE, "-2")
-  field(DTYP, "asynInt32")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbOpcpa.bError?")
   field(ZSV, "NO_ALARM")
   field(OSV, "MAJOR")
   field(ZNAM, "OK")
