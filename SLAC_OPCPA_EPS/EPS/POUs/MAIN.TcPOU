@@ -94,6 +94,18 @@ VAR
 	'}
 	bMasterOverride : BOOL; // Master override control for safety system.
     
+	{attribute 'pytmc' := '
+		pv: @(BASE):LPS:MASTER_AMP_SHUTTER
+		io: o
+	'}
+	bAmpShutterClosed : BOOL; // Master Amphos Shutter control
+	
+	{attribute 'pytmc' := '
+		pv: @(BASE):LPS:MASTER_LATCH_RESET
+		io: o
+	'}
+	bMasterLatchReset : BOOL; //Master release of latched error conditions
+	
 	{attribute 'pytmc' := 'pv: @(BASE):LPS:PLC'}
 	fbDiag : FB_EcatDiag; // Ethercat diagnostics
 END_VAR
@@ -122,7 +134,8 @@ fbLeakMonitor(
 	bLeakOpticaltableNoLaser => stErrors.bLeakOpticalTableNoLaser,
 	bLeakOpcpaCarbideOn => stErrors.bLeakOpcpaCarbideOn,
 	bLeakUnderTable => stErrors.bLeakUnderTable,
-	bLeakInsideRacks => stErrors.bLeakInsideRacks
+	bLeakInsideRacks => stErrors.bLeakInsideRacks,
+	bMasterLatchReset := bMasterLatchReset
 );
 
 (* Monitors for error events on chiller loop 1 *)
@@ -154,7 +167,8 @@ fbAmphos(
 	nVoltageRaw := GVL_IO.nAmphosVoltageRaw,
 	bAmphosOn := GVL_IO.bAmphosOn,
 	stSetpoints := GVL_Laser.stAmphosSP,
-	bError => stErrors.bAmphosBeam
+	bError => stErrors.bAmphosBeam,
+	bMasterLatchReset := bMasterLatchReset
 );
 
 (* Monitors the OPCPA laser *)
@@ -162,7 +176,8 @@ fbOpcpa(
 	nVoltageRaw := GVL_IO.nOpcpaVoltageRaw,
 	bAmphosOn := GVL_IO.bAmphosOn,
 	stSetpoints := GVL_Laser.stOpcpaSP,
-	bError => stErrors.bOpcpaBeam
+	bError => stErrors.bOpcpaBeam,
+	bMasterLatchReset := bMasterLatchReset
 );
 
 (*
@@ -235,13 +250,16 @@ fbTempMon08(
 fbDumpChiller(
 	bAmphosOn := GVL_IO.bAmphosOn,
 	bDumpChillerFlow := GVL_IO.bDumpChillerFlow,
-	bError => stErrors.bDumpChiller
+	bError => stErrors.bDumpChiller,
+	bMasterLatchReset := bMasterLatchReset
 );
 
 (* Flow sensor monitor for the baseplate chiller *)
 fbBaseplateChiller(
+	bAmphosOn := GVL_IO.bAmphosOn,
 	bBaseplateChillerFlow := GVL_IO.bBaseplateChillerFlow,
-	bError => stErrors.bBaseplateChiller
+	bError => stErrors.bBaseplateChiller,
+	bMasterLatchReset := bMasterLatchReset
 );
 	
 (*
@@ -289,7 +307,8 @@ GVL_IO.bAmphosShutterEnable := F_AmphosShutterEnable(
 	bLoopTempOverride04 := fbChillerLoop04.bOperatorOverride,
 	stOpcpaSetpoints := GVL_Laser.stOpcpaSP,
 	stErrors := stErrors,
-	bMasterOverride := bMasterOverride
+	bMasterOverride := bMasterOverride,
+	bAmpShutterClosed := bAmpShutterClosed
 );
 	
 (* Enable Carbide shutter if interlock logic passes *)

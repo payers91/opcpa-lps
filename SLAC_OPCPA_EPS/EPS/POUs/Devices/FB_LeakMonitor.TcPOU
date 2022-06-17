@@ -8,6 +8,7 @@ VAR_INPUT
 	bAmphosOn : BOOL; // Whether the Amphos is on
 	bCarbideOn : BOOL; // Whether the Carbide is on
 	nLocationResistance: UINT; // Used for calculating the location of the leak
+	bMasterLatchReset : BOOL; //Master latched error reset
 END_VAR
 VAR_IN_OUT CONSTANT
 	stBound : ST_LeakBoundaries; // Setpoints for calculating leak locations from location resistance
@@ -119,6 +120,14 @@ IF (bLeakDetected OR bLowResistance) THEN
 	IF (stBound.nLMin6 <= nLocationResistance AND nLocationResistance < stBound.nLMax6) THEN
 		bLeakInsideRacks := TRUE;
 	END_IF
+END_IF
+
+IF bMasterLatchReset THEN
+		bLeakOpticalTableAmphosOn := FALSE;
+		bLeakOpcpaCarbideOn := FALSE;
+		bLeakOpticalTableNoLaser := FALSE;
+		bLeakUnderTable := FALSE;
+		bLeakInsideRacks := FALSE;
 END_IF
 ]]></ST>
     </Implementation>

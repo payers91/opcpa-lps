@@ -6,6 +6,7 @@ FUNCTION_BLOCK FB_DumpChiller
 VAR_INPUT
 	bAmphosOn : BOOL; // Whether the amphos is turned on
 	bDumpChillerFlow : BOOL; // Signal from the flow sensor. Normally high.
+	bMasterLatchReset : BOOL; //Master latched error reset
 END_VAR
 VAR_OUTPUT
 	{attribute 'pytmc' := '
@@ -25,6 +26,10 @@ END_VAR
       <ST><![CDATA[(* Latch error if the dump chiller flow detects an error and the amphos is on *)
 IF bAmphosOn AND NOT bDumpChillerFlow THEN
 	bError := TRUE;
+END_IF
+
+IF bMasterLatchReset THEN
+	bError := FALSE;
 END_IF]]></ST>
     </Implementation>
     <Method Name="Reset" Id="{798c5e10-f7ad-4fe8-969f-0ab4a0d7941b}">
